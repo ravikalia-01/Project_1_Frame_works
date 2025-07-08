@@ -1,0 +1,37 @@
+/* Global Reset */
+#root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  min-height: 100vh;
+  font-size: 11px;
+}
+
+/* Full-width App Container */
+.app-container {
+
+  margin: 0 auto;
+  padding: 20px 40px;
+}
+
+
+/* Responsive Padding on Smaller Screens */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 16px 20px;
+  }
+}

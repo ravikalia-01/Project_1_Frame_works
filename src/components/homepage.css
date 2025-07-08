@@ -1,0 +1,122 @@
+/* Full-width sticky navbar */
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(104, 100, 87);
+  padding: 1rem 2rem;
+  color: gold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+s
+
+/* Left side with logo and title */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-logo {
+  width: 30px;
+  height: 40px;
+  
+}
+
+.navbar-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Right side nav buttons */
+.navbar-right {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar-right button {
+  background: none;
+  border: none;
+  color: gold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navbar-right button:hover {
+  color: rgb(254, 237, 136);
+}
+
+/* Main content styling */
+.home-main {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.home-main h2 {
+  font-size: 2rem;
+  color: rgb(120, 102, 3);
+}
+
+.home-main p {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 600px;
+  margin: 1rem auto 2rem;
+}
+
+.start-btn {
+  background-color: rgb(92, 81, 20);
+  color: gold;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.start-btn:hover {
+  background-color: rgb(211, 182, 18);
+  color: rgb(48, 36, 6);
+}
+
+/* Responsive dropdown menu */
+@media (max-width: 768px) {
+  .navbar-right {
+    flex-direction: column;
+    position: absolute;
+    right: 1rem;
+    top: 70px;
+    background-color: #d64123;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: none;
+  }
+
+  .navbar-right.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+}

@@ -1,0 +1,50 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(104, 100, 87);
+  padding: 1rem 2rem;
+  margin-bottom: 20px;
+  color: gold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-logo {
+  width: 30px;
+  height: 40px;
+}
+
+.navbar-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar-right button {
+  background: none;
+  border: none;
+  color: gold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navbar-right button:hover {
+  color: rgb(254, 237, 136);
+}

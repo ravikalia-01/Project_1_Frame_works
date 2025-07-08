@@ -1,0 +1,219 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+}
+
+/* Center page wrapper */
+.page-center {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* or center if you want vertical centering */
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  padding: 40px 20px;
+}
+
+/* profile image or logo */
+.image-preview,
+.profile-pic {
+  width: 80px;
+  height: 120px;
+  object-fit: fill;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+
+/* Resume Builder */
+.resume-builder {
+  background: white;
+  padding: 30px;
+  margin-top: 100px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.resume-builder h1 {
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.resume-form label {
+  font-weight: 600;
+  margin-top: 15px;
+  display: block;
+  color: #444;
+}
+
+.resume-form input,
+.resume-form select,
+.resume-form textarea {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.resume-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.resume-form button {
+  margin-top: 15px;
+  padding: 10px 16px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.resume-form button:hover {
+  background-color: #005fa3;
+}
+
+.nested-group {
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.nested-group input,
+.nested-group select {
+  margin-top: 8px;
+}
+
+/* Resume Preview */
+.resume-preview {
+  max-width: 1100px;
+  margin: 40px auto;
+  margin-top: 100px;
+  background: rgb(153, 146, 119);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.07);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  align-self: center;
+}
+
+.title {
+  text-align: center;
+  font-size: 46px;
+  margin-bottom: 10px;
+  font-family: 'Emigrow', sans-serif;
+
+}
+
+.head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #56461d;
+}
+.proImg {
+  flex: 20%;
+}
+
+.titleClass {
+  flex: 80%;
+  text-align: center;
+  color: gold;
+  
+}
+
+.resume-columns {
+  display: flex;
+  gap: 24px;
+  flex-wrap: nowrap;
+  width: max-content;
+}
+
+.left-column {
+  flex:  40%;
+  background-color: rgb(200, 170, 0);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+  min-width: 280px;
+}
+
+.right-column {
+  flex:  60%;
+  background-color: rgb(241, 221, 105);
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 3px solid rgb(97, 83, 0);
+  min-width: 300px;
+}
+
+.section {
+  margin-bottom: 25px;
+}
+
+.lang{
+  text-transform: capitalize;
+}
+
+.section h2 {
+  border-bottom: 1px solid #332e18;
+  padding-bottom: 6px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #333;
+}
+
+.item {
+  margin-bottom: 15px;
+  border-bottom: 1px dashed #ddd;
+  padding-bottom: 10px;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+ul li {
+  margin-bottom: 6px;
+}
+
+.bioClass {
+  margin: 20px;
+  font-style: italic;
+  color: #0d7aee;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+.resume-preview button {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.resume-preview button:hover {
+  background-color: #005fa3;
+}
