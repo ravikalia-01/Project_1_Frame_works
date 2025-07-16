@@ -60,6 +60,7 @@ function ResumePreview() {
               <h2>Education</h2>
               {resumeData.education.map((edu, i) => (
                 <div key={i} className="item">
+                  <h3> {edu.course}</h3>
                   <p><strong>College:</strong> {edu.college}</p>
                   <p><strong>Place:</strong> {edu.place}</p>
                   <p><strong>Year:</strong> {edu.year}</p>
@@ -88,6 +89,7 @@ function ResumePreview() {
               <h2>Work Experience</h2>
               {resumeData.experience.map((exp, i) => (
                 <div key={i} className="item">
+                  <h3>{exp.title}</h3>
                   <p><strong>Company:</strong> {exp.company}</p>
                   <p><strong>Start Date:</strong> {exp.start}</p>
                   <p><strong>End Date:</strong> {exp.end}</p>

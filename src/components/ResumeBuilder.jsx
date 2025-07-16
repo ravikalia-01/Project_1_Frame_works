@@ -16,8 +16,8 @@ function ResumeBuilder() {
     maritalStatus: "",
     bio: "",
     languages: "",
-    education: [{ college: "", place: "", year: "", status: "" }],
-    experience: [{ company: "", city: "", province: "", country: "", start: "", end: "" }],
+    education: [{ course:"", college: "", place: "", year: "", status: "" }],
+    experience: [{ title: "",company: "", city: "", province: "", country: "", start: "", end: "" }],
     skills: [""],
   });
 
@@ -55,7 +55,7 @@ function ResumeBuilder() {
   const addEducation = () => {
     setResumeData({
       ...resumeData,
-      education: [...resumeData.education, { college: "", place: "", year: "", status: "" }],
+      education: [...resumeData.education, { course: "", college: "", place: "", year: "", status: "" }],
     });
   };
 
@@ -64,7 +64,7 @@ function ResumeBuilder() {
       ...resumeData,
       experience: [
         ...resumeData.experience,
-        { company: "", city: "", province: "", country: "", start: "", end: "" },
+        { title: "", company: "", city: "", province: "", country: "", start: "", end: "" },
       ],
     });
   };
@@ -132,6 +132,7 @@ function ResumeBuilder() {
             <h3>Education</h3>
             {resumeData.education.map((edu, i) => (
               <div key={i} className="nested-group">
+                <input  type="text"  name="course"  placeholder="Course/Program"  value={edu.course}  onChange={e => handleEducationChange(i, e)}/>
                 <input  type="text"  name="college"  placeholder="College/University"  value={edu.college}  onChange={e => handleEducationChange(i, e)}/>
                 <input  type="text"  name="place"  placeholder="Place"  value={edu.place}  onChange={e => handleEducationChange(i, e)}/>
                 <input  type="text"  name="year"  placeholder="Year of Passing"  value={edu.year}  onChange={e => handleEducationChange(i, e)}/>
@@ -149,6 +150,7 @@ function ResumeBuilder() {
             <h3>Work Experience</h3>
             {resumeData.experience.map((exp, i) => (
               <div key={i} className="nested-group">
+                <input  type="text"  name="title"  placeholder="Title/Post Name"  value={exp.title}  onChange={e => handleExperienceChange(i, e)}/>
                 <input  type="text"  name="company"  placeholder="Company Name"  value={exp.company}  onChange={e => handleExperienceChange(i, e)}/>
                 <input  type="date"  name="start"  value={exp.start}  onChange={e => handleExperienceChange(i, e)}/>
                 <input  type="date"  name="end"  value={exp.end}  onChange={e => handleExperienceChange(i, e)}/>

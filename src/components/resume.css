@@ -193,7 +193,9 @@ ul li {
 .bioClass {
   margin: 20px;
   font-style: italic;
-  color: #0d7aee;
+  color: #ffffff;
+  max-width: 750px;
+  font-size: medium;
 }
 
 hr {
