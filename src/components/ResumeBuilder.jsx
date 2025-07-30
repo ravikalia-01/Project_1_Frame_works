@@ -1,80 +1,61 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useResume } from "../context/AppContext";
 import Header from "./Header";
-
 import "./resume.css";
 
 function ResumeBuilder() {
   const navigate = useNavigate();
-
-  const [resumeData, setResumeData] = useState({
-    name: "",
-    email: "",
-    mobile: "",
-    dob: "",
-    gender: "",
-    maritalStatus: "",
-    bio: "",
-    languages: "",
-    education: [{ course:"", college: "", place: "", year: "", status: "" }],
-    experience: [{ title: "",company: "", city: "", province: "", country: "", start: "", end: "" }],
-    skills: [""],
-  });
+  const {
+    resumeData,
+    updateField,
+    updateEducation,
+    updateExperience,
+    updateSkill,
+    addEducation,
+    addExperience,
+    addSkill,
+    removeEducation,
+    removeExperience,
+    removeSkill,
+    resetForm
+  } = useResume();
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      setResumeData({ ...resumeData, profileImage: imageUrl });
+      updateField("profileImage", imageUrl);
     }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setResumeData({ ...resumeData, [name]: value });
+    updateField(name, value);
   };
 
   const handleEducationChange = (index, e) => {
-    const newEdu = [...resumeData.education];
-    newEdu[index][e.target.name] = e.target.value;
-    setResumeData({ ...resumeData, education: newEdu });
+    const { name, value } = e.target;
+    updateEducation(index, { [name]: value });
   };
 
   const handleExperienceChange = (index, e) => {
-    const newExp = [...resumeData.experience];
-    newExp[index][e.target.name] = e.target.value;
-    setResumeData({ ...resumeData, experience: newExp });
+    const { name, value } = e.target;
+    updateExperience(index, { [name]: value });
   };
 
   const handleSkillChange = (index, e) => {
-    const newSkills = [...resumeData.skills];
-    newSkills[index] = e.target.value;
-    setResumeData({ ...resumeData, skills: newSkills });
-  };
-
-  const addEducation = () => {
-    setResumeData({
-      ...resumeData,
-      education: [...resumeData.education, { course: "", college: "", place: "", year: "", status: "" }],
-    });
-  };
-
-  const addExperience = () => {
-    setResumeData({
-      ...resumeData,
-      experience: [
-        ...resumeData.experience,
-        { title: "", company: "", city: "", province: "", country: "", start: "", end: "" },
-      ],
-    });
-  };
-
-  const addSkill = () => {
-    setResumeData({ ...resumeData, skills: [...resumeData.skills, ""] });
+    updateSkill(index, e.target.value);
   };
 
   const handlePreview = () => {
-    navigate("/preview", { state: { resumeData } });
+    navigate("/preview");
+  };
+
+  const handleReset = () => {
+    if (window.confirm("Are you sure you want to reset all form data?")) {
+      resetForm();
+    }
   };
 
   return (
@@ -142,6 +123,11 @@ function ResumeBuilder() {
                   <option value="Pursuing">Pursuing</option>
                   <option value="Dropped">Dropped</option>
                 </select>
+                {resumeData.education.length > 1 && (
+                  <button type="button" className="remove-btn" onClick={() => removeEducation(i)}>
+                    Remove
+                  </button>
+                )}
               </div>
             ))}
             <button type="button" onClick={addEducation}>Add Education</button>
@@ -157,6 +143,11 @@ function ResumeBuilder() {
                 <input  type="text"  name="city"  placeholder="City"  value={exp.city}  onChange={e => handleExperienceChange(i, e)}/>
                 <input  type="text"  name="province"  placeholder="Province"  value={exp.province}  onChange={e => handleExperienceChange(i, e)}/>
                 <input  type="text"  name="country"  placeholder="Country"  value={exp.country}  onChange={e => handleExperienceChange(i, e)}/>
+                {resumeData.experience.length > 1 && (
+                  <button type="button" className="remove-btn" onClick={() => removeExperience(i)}>
+                    Remove
+                  </button>
+                )}
               </div>
             ))}
             <button type="button" onClick={addExperience}>Add Experience</button>
@@ -164,13 +155,26 @@ function ResumeBuilder() {
           <div>
           <h3>Skills</h3>
           {resumeData.skills.map((skill, i) => (
-            <input  key={i}  type="text"  placeholder={`Skill ${i + 1}`}  value={skill}  onChange={e => handleSkillChange(i, e)}/>
+            <div key={i} className="skill-input-group">
+              <input  type="text"  placeholder={`Skill ${i + 1}`}  value={skill}  onChange={e => handleSkillChange(i, e)}/>
+              {resumeData.skills.length > 1 && (
+                <button type="button" className="remove-btn" onClick={() => removeSkill(i)}>
+                  Remove
+                </button>
+              )}
+            </div>
           ))}
           <button type="button" onClick={addSkill}>Add Skill</button>
           </div>
-          <button type="button" className="preview-btn" onClick={handlePreview}>
-            Preview Resume
-          </button>
+          
+          <div className="form-actions">
+            <button type="button" className="reset-btn" onClick={handleReset}>
+              Reset Form
+            </button>
+            <button type="button" className="preview-btn" onClick={handlePreview}>
+              Preview Resume
+            </button>
+          </div>
         </form>
       </div>
     </div>

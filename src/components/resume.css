@@ -7,10 +7,11 @@
 .page-center {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* or center if you want vertical centering */
+  align-items: flex-start;
   min-height: 100vh;
-  background-color: #f0f2f5;
+  background-color: var(--color-background);
   padding: 40px 20px;
+  transition: var(--transition-theme);
 }
 
 /* profile image or logo */
@@ -21,24 +22,26 @@
   object-fit: fill;
   border-radius: 10px;
   margin-bottom: 10px;
+  border: 2px solid var(--color-border);
 }
-
 
 /* Resume Builder */
 .resume-builder {
-  background: white;
+  background: var(--color-surface);
   padding: 30px;
   margin-top: 100px;
   border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 12px var(--color-shadow);
   max-width: 900px;
   width: 100%;
   overflow-y: auto;
+  transition: var(--transition-theme);
+  border: 1px solid var(--color-border);
 }
 
 .resume-builder h1 {
   margin-bottom: 20px;
-  color: #333;
+  color: var(--color-text);
   text-align: center;
 }
 
@@ -46,7 +49,7 @@
   font-weight: 600;
   margin-top: 15px;
   display: block;
-  color: #444;
+  color: var(--color-text);
 }
 
 .resume-form input,
@@ -56,8 +59,19 @@
   padding: 8px 10px;
   margin-top: 6px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-border);
   font-size: 15px;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: var(--transition-theme);
+}
+
+.resume-form input:focus,
+.resume-form select:focus,
+.resume-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
 
 .resume-form textarea {
@@ -68,27 +82,91 @@
 .resume-form button {
   margin-top: 15px;
   padding: 10px 16px;
-  background-color: #0077cc;
+  background-color: var(--color-primary);
   color: white;
   border: none;
   border-radius: 6px;
   font-weight: 700;
   cursor: pointer;
+  transition: var(--transition-theme);
 }
 
 .resume-form button:hover {
-  background-color: #005fa3;
+  background-color: #0056b3;
 }
 
 .nested-group {
   margin-bottom: 12px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
   padding-bottom: 10px;
+  position: relative;
 }
 
 .nested-group input,
 .nested-group select {
   margin-top: 8px;
+}
+
+/* Remove buttons */
+.remove-btn {
+  background-color: var(--color-danger) !important;
+  color: white !important;
+  padding: 6px 12px !important;
+  font-size: 12px !important;
+  margin-top: 8px !important;
+  margin-left: 8px;
+  border-radius: 4px;
+}
+
+.remove-btn:hover {
+  background-color: #c82333 !important;
+}
+
+/* Skill input group */
+.skill-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.skill-input-group input {
+  flex: 1;
+  margin-top: 0 !important;
+}
+
+.skill-input-group .remove-btn {
+  margin-top: 0 !important;
+  margin-left: 0;
+  flex-shrink: 0;
+}
+
+/* Form actions */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--color-border);
+}
+
+.reset-btn {
+  background-color: var(--color-secondary) !important;
+  color: white !important;
+}
+
+.reset-btn:hover {
+  background-color: #545b62 !important;
+}
+
+.preview-btn {
+  background-color: var(--color-success) !important;
+  color: white !important;
+}
+
+.preview-btn:hover {
+  background-color: #1e7e34 !important;
 }
 
 /* Resume Preview */

@@ -1,3 +1,23 @@
+/* CSS Custom Properties for Theme Support */
+:root {
+  /* Default Light Theme Colors */
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+  --color-background: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-text: #212529;
+  --color-textSecondary: #6c757d;
+  --color-border: #dee2e6;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  
+  /* Transition for smooth theme changes */
+  --transition-theme: all 0.3s ease;
+}
+
 /* Global Reset */
 #root {
   margin: 0;
@@ -12,26 +32,216 @@
   box-sizing: border-box;
 }
 
-/* Body Styling */
+/* Body Styling with Theme Support */
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f0f2f5;
-  color: #333;
+  background-color: var(--color-background);
+  color: var(--color-text);
   min-height: 100vh;
   font-size: 11px;
+  transition: var(--transition-theme);
+}
+
+/* Theme-specific body classes */
+body.theme-light {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+body.theme-dark {
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 /* Full-width App Container */
 .app-container {
-
   margin: 0 auto;
   padding: 20px 40px;
+  background-color: var(--color-background);
+  transition: var(--transition-theme);
 }
 
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: var(--color-surface);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px var(--color-shadow);
+  width: 90%;
+  max-width: 400px;
+  transition: var(--transition-theme);
+}
+
+.modal-content h2 {
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.modal-content .form-group {
+  margin-bottom: 1rem;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-size: 14px;
+  transition: var(--transition-theme);
+}
+
+.modal-content input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.modal-content .button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.modal-content button {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-theme);
+}
+
+.modal-content .btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.modal-content .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.modal-content .btn-secondary {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.modal-content .btn-secondary:hover {
+  background-color: #545b62;
+}
+
+.modal-content .btn-primary:disabled {
+  background-color: var(--color-secondary);
+  cursor: not-allowed;
+}
+
+.modal-content .error-message {
+  color: var(--color-danger);
+  font-size: 12px;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.modal-content .switch-mode {
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--color-textSecondary);
+  font-size: 12px;
+}
+
+.modal-content .switch-mode button {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+/* Page center layout */
+.page-center {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: var(--transition-theme);
+}
+
+/* Resume preview specific styles */
+.resume-preview {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--color-surface);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--color-shadow);
+  transition: var(--transition-theme);
+}
+
+.resume-preview h2 {
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.resume-preview p {
+  color: var(--color-textSecondary);
+  margin-bottom: 1.5rem;
+}
+
+.preview-btn {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.preview-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
 
 /* Responsive Padding on Smaller Screens */
 @media (max-width: 768px) {
   .app-container {
     padding: 16px 20px;
+  }
+  
+  .modal-content {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .resume-preview {
+    padding: 1rem;
+    margin: 1rem;
   }
 }

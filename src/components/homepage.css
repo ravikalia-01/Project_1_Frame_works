@@ -1,122 +1,218 @@
-/* Full-width sticky navbar */
-
-
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  z-index: 999;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgb(104, 100, 87);
-  padding: 1rem 2rem;
-  color: gold;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-}
-s
-
-/* Left side with logo and title */
-.navbar-left {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.navbar-logo {
-  width: 30px;
-  height: 40px;
-  
-}
-
-.navbar-title {
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-/* Right side nav buttons */
-.navbar-right {
-  display: flex;
-  gap: 1rem;
-}
-
-.navbar-right button {
-  background: none;
-  border: none;
-  color: gold;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.navbar-right button:hover {
-  color: rgb(254, 237, 136);
+/* Home Container */
+.home-container {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: var(--transition-theme);
 }
 
 /* Main content styling */
 .home-main {
+  padding-top: 120px; /* Account for fixed header */
+  padding-bottom: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Hero Section */
+.hero-section {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 4rem 0;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-info));
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin-bottom: 4rem;
 }
 
-.home-main h2 {
-  font-size: 2rem;
-  color: rgb(120, 102, 3);
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
-.home-main p {
-  font-size: 1.1rem;
-  color: #555;
-  max-width: 600px;
-  margin: 1rem auto 2rem;
+.hero-description {
+  font-size: 1.2rem;
+  color: var(--color-textSecondary);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
 }
 
-.start-btn {
-  background-color: rgb(92, 81, 20);
-  color: gold;
-  border: none;
-  padding: 0.8rem 1.5rem;
+/* Welcome User Section */
+.welcome-user {
+  background-color: var(--color-surface);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px var(--color-shadow);
+  margin: 2rem auto;
+  max-width: 500px;
+  transition: var(--transition-theme);
+}
+
+.welcome-user h3 {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.welcome-user p {
+  color: var(--color-textSecondary);
+  margin-bottom: 1.5rem;
+}
+
+/* Guest Section */
+.guest-section {
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.auth-prompt {
+  color: var(--color-textSecondary);
   font-size: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: var(--color-surface);
+  border-radius: 8px;
+  border-left: 4px solid var(--color-primary);
+}
+
+/* Start Button */
+.start-btn {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: var(--transition-theme);
+  box-shadow: 0 2px 4px var(--color-shadow);
 }
 
 .start-btn:hover {
-  background-color: rgb(211, 182, 18);
-  color: rgb(48, 36, 6);
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--color-shadow);
 }
 
-/* Responsive dropdown menu */
+/* Features Section */
+.features-section {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.features-section h2 {
+  font-size: 2.5rem;
+  color: var(--color-text);
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  background-color: var(--color-surface);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px var(--color-shadow);
+  transition: var(--transition-theme);
+  border: 1px solid var(--color-border);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px var(--color-shadow);
+}
+
+.feature-card h3 {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.feature-card p {
+  color: var(--color-textSecondary);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .navbar-right {
-    flex-direction: column;
-    position: absolute;
-    right: 1rem;
-    top: 70px;
-    background-color: #d64123;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    display: none;
+  .home-main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 140px; /* More space for mobile header */
   }
-
-  .navbar-right.active {
-    display: flex;
+  
+  .hero-section {
+    padding: 2rem 0;
   }
-
-  .menu-toggle {
-    display: block;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
+  
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+  }
+  
+  .features-section h2 {
+    font-size: 2rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .feature-card {
+    padding: 1.5rem;
+  }
+  
+  .welcome-user,
+  .guest-section {
+    margin: 1.5rem auto;
+  }
+  
+  .welcome-user {
+    padding: 1.5rem;
   }
 }
 
-@media (min-width: 769px) {
-  .menu-toggle {
-    display: none;
+@media (max-width: 480px) {
+  .hero-section h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero-description {
+    font-size: 0.9rem;
+  }
+  
+  .start-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .feature-card {
+    padding: 1rem;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .feature-card p {
+    font-size: 0.9rem;
   }
 }

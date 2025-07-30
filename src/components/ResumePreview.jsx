@@ -1,20 +1,32 @@
 import React, { useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
+import { useResume } from "../context/AppContext";
 import Header from "./Header";
 import "./resume.css";
 
 function ResumePreview() {
-  const { state } = useLocation();
   const navigate = useNavigate();
-  const { resumeData } = state || {};
+  const { resumeData } = useResume();
   const resumeRef = useRef();
 
-  if (!resumeData) {
+  // Check if there's any meaningful data to display
+  const hasData = resumeData.name || resumeData.email || resumeData.mobile || 
+                  resumeData.education.some(edu => edu.course || edu.college) ||
+                  resumeData.experience.some(exp => exp.title || exp.company) ||
+                  resumeData.skills.some(skill => skill.trim());
+
+  if (!hasData) {
     return (
-      <div className="resume-preview">
-        <h2>No resume data to display</h2>
-        <button onClick={() => navigate("/")}>Back to Builder</button>
+      <div className="page-center">
+        <Header />
+        <div className="resume-preview" style={{ textAlign: 'center', padding: '2rem' }}>
+          <h2>No resume data to display</h2>
+          <p>Please go to the Resume Builder to add your information.</p>
+          <button onClick={() => navigate("/builder")} className="preview-btn">
+            Go to Resume Builder
+          </button>
+        </div>
       </div>
     );
   }
