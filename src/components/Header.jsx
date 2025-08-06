@@ -10,6 +10,7 @@ function Header() {
   
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [isBurgerOpen, setIsBurgerOpen] = useState(false);
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
   const [registerForm, setRegisterForm] = useState({
     name: "",
@@ -122,7 +123,107 @@ function Header() {
             </div>
           )}
         </div>
+
+        {/* Burger Menu Button */}
+        <button 
+          className={`burger-menu ${isBurgerOpen ? 'active' : ''}`}
+          onClick={() => setIsBurgerOpen(!isBurgerOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
       </nav>
+
+      {/* Mobile Navigation Overlay */}
+      <div 
+        className={`mobile-nav-overlay ${isBurgerOpen ? 'active' : ''}`}
+        onClick={() => setIsBurgerOpen(false)}
+      ></div>
+
+      {/* Mobile Navigation Menu */}
+      <div className={`mobile-nav-menu ${isBurgerOpen ? 'active' : ''}`}>
+        <button 
+          className="mobile-nav-item"
+          onClick={() => {
+            navigate("/");
+            setIsBurgerOpen(false);
+          }}
+        >
+          Home
+        </button>
+        <button 
+          className="mobile-nav-item"
+          onClick={() => {
+            navigate("/builder");
+            setIsBurgerOpen(false);
+          }}
+        >
+          Resume Builder
+        </button>
+        <button 
+          className="mobile-nav-item"
+          onClick={() => {
+            navigate("/preview");
+            setIsBurgerOpen(false);
+          }}
+        >
+          Resume Preview
+        </button>
+        
+        <div className="mobile-nav-divider"></div>
+        
+        {/* Theme Toggle in Mobile */}
+        <button 
+          className="mobile-nav-item"
+          onClick={() => {
+            toggleTheme();
+            setIsBurgerOpen(false);
+          }}
+        >
+          Switch Theme ({theme === 'light' ? 'Dark' : 'Light'})
+        </button>
+        
+        {/* Authentication in Mobile */}
+        {isAuthenticated ? (
+          <>
+            <div className="mobile-nav-item" style={{fontWeight: 'bold'}}>
+              Hello, {user?.name}!
+            </div>
+            <button 
+              className="mobile-nav-item"
+              onClick={() => {
+                handleLogout();
+                setIsBurgerOpen(false);
+              }}
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <button 
+              className="mobile-nav-item"
+              onClick={() => {
+                setShowLoginModal(true);
+                setIsBurgerOpen(false);
+              }}
+            >
+              Login
+            </button>
+            <button 
+              className="mobile-nav-item"
+              onClick={() => {
+                setShowRegisterModal(true);
+                setIsBurgerOpen(false);
+              }}
+            >
+              Sign Up
+            </button>
+          </>
+        )}
+      </div>
 
       {/* Login Modal */}
       {showLoginModal && (

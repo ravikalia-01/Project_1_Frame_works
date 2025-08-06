@@ -194,7 +194,7 @@ body.theme-dark {
 /* Resume preview specific styles */
 .resume-preview {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 150px auto 0 auto;
   padding: 2rem;
   background-color: var(--color-surface);
   border-radius: 8px;
@@ -203,12 +203,12 @@ body.theme-dark {
 }
 
 .resume-preview h2 {
-  color: var(--color-text);
+  /* color: var(--color-text); */
   margin-bottom: 1rem;
 }
 
 .resume-preview p {
-  color: var(--color-textSecondary);
+  /* color: var(--color-Secondary); */
   margin-bottom: 1.5rem;
 }
 
